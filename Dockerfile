@@ -4,27 +4,49 @@ RUN apk update
 
 WORKDIR /app
 
-RUN apk update && \
-    apk add --no-cache \
-        curl \
-        ffmpeg \
-        ffmpeg-libavcodec \
-        ffmpeg-libavformat \
-        ffmpeg-libavutil \
-        ffmpeg-libswscale \
-        ffmpeg-libavfilter \
-        ffmpeg-libpostproc \
-        ffmpeg-libass \
-        libtheora \
-        libvorbis \
-        libvpx \
-        x264-dev \
-        x265-dev \
-        opus \
-        lame \
-        openssl
+RUN apk add --update \
+  build-base \
+  coreutils \
+  freetype-dev \
+  gcc \
+  lame-dev \
+  libogg-dev \
+  libass \
+  libass-dev \
+  libvpx-dev \
+  libvorbis-dev \
+  libwebp-dev \
+  libtheora-dev \
+  opus-dev \
+  openssl \
+  openssl-dev \
+  pkgconf \
+  pkgconfig \
+  rtmpdump-dev \
+  wget \
+  x264-dev \
+  x265-dev \
+  yasm
 
-COPY build/libs/video-processor.jar video-processor.jar
+RUN apk add --update \
+  ca-certificates \
+  openssl \
+  pcre \
+  lame \
+  libogg \
+  libass \
+  libvpx \
+  libvorbis \
+  libwebp \
+  libtheora \
+  opus \
+  rtmpdump \
+  x264-dev \
+  x265-dev
+
+RUN apk add --update ffmpeg
+
+#COPY build/libs/video-processor.jar video-processor.jar
 
 EXPOSE 8085
 
