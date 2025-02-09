@@ -46,7 +46,7 @@ RUN apk add --update \
 
 RUN apk add --update ffmpeg
 
-#COPY build/libs/video-processor.jar video-processor.jar
+COPY build/libs/video-processor.jar video-processor.jar
 
 EXPOSE 8085
 
