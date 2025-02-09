@@ -35,7 +35,7 @@ class ExtractFramesUseCaseTest {
     fun `should process video successfully with mocked files`() = runBlocking {
         val processId = ProcessId.generate().value
         val request = CreateFramesInboundRequest(processId)
-        val inputStream: InputStream = File("src/test/resources/SampleVideo_1280x720_1mb.mkv").inputStream()
+        val inputStream: InputStream = File("src/test/resources/samplevideo.mp4").inputStream()
 
         every { s3File.download(bucketName, processId) } returns inputStream
         every { s3File.uploadFile(any(), any(), any()) } returns Unit

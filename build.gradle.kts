@@ -121,22 +121,6 @@ configurations {
     }
 }
 
-task("behaviorTest") {
-    dependsOn("assemble", "testClasses")
-    doLast {
-        javaexec {
-            mainClass = "io.cucumber.core.cli.Main"
-            classpath = configurations["cucumberRuntime"] + sourceSets.main.get().output + sourceSets.test.get().output
-            args = listOf(
-                "--plugin", "pretty",
-                "--glue", "classpath:br.com.fiap.video.processor.cucumber",
-                "src/test/resources/cucumber/features"
-            )
-        }
-    }
-}
-
-
 sonar {
 
     val exclusions = listOf(
