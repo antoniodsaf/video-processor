@@ -19,4 +19,4 @@ spec:
         - containerPort: 8085
         envFrom:
         - secretRef:
-            name: video-processor-secret
+            name: videoprocessor-secret

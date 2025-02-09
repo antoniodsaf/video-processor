@@ -37,7 +37,7 @@ spring:
       region: ${AWS_REGION:us-east-1}
 #      endpoint: ${AWS_ENDPOINT_HOST:localhost}
       s3:
-        processing-bucket: ${AWS_S3_BUCKET_NAME:test-processingbucket}
+        processing-bucket: ${AWS_S3_BUCKET_NAME:videoprocessing-fiap}
       sqs:
         processing-queue-name: ${QUEUE_NAME:trigger_processing}
         update-process-status-queue-name: ${SQS_UPDATE_PROCESS_QUEUE_NAME:update_process}
