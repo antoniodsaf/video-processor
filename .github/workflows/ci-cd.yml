@@ -5,6 +5,10 @@ on:
     branches:
       - master
 
+env:
+  REGION_DEFAULT: "us-east-1"
+  CLUSTER_NAME: "videoprocessor-cluster"
+
 jobs:
   unit-tests:
     runs-on: ubuntu-latest
