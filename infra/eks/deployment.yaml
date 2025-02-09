@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: video-processor
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: video-processor
+  template:
+    metadata:
+      labels:
+        app: video-processor
+    spec:
+      containers:
+      - name: video-processor
+        image: antoniodsaf/video-processor:latest
+        ports:
+        - containerPort: 8085
+        envFrom:
+        - secretRef:
+            name: video-processor-secret

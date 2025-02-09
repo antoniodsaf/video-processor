@@ -1,0 +1,17 @@
+spring:
+  datasource:
+    driverClassName: org.h2.Driver
+    url: jdbc:h2:mem:testdb;DB_CLOSE_ON_EXIT=FALSE
+    username: sa
+    password: password
+  jpa:
+    open-in-view: false
+    database-platform: org.hibernate.dialect.H2Dialect
+  cloud:
+    aws:
+      credentials:
+        access-key: "test"
+        secret-key: "test"
+      sqs:
+        queue-name: "init-test"
+        queue-name2: "status-changed"

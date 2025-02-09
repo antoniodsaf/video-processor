@@ -1,0 +1,56 @@
+version: "3.8"
+services:
+  db:
+    image: postgres
+    restart: always
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: mysecretpassword
+    ports:
+      - "5432:5432"
+    volumes:
+      - ./data/db:/var/lib/postgresql/data
+
+  localstack:
+    image: localstack/localstack
+    container_name: localstack
+    ports:
+      - "4566-4583:4566-4583"
+    environment:
+      - AWS_DEFAULT_REGION=sa-east-1
+      - AWS_ACCESS_KEY_ID=asdf
+      - AWS_SECRET_ACCESS_KEY=asdf
+      - DEFAULT_REGION=us-east-1
+      - http_proxy=
+      - https_proxy=
+      - SERVICES=${SERVICES-}
+      - DEBUG=${DEBUG-}
+      - DATA_DIR=${DATA_DIR-}
+      - LAMBDA_EXECUTOR=${LAMBDA_EXECUTOR-}
+      - HOST_TMP_FOLDER=${TMPDIR:-/tmp/}teste/localstack
+      - DOCKER_HOST=unix:///var/run/docker.sock
+      - LOCALSTACK_HOST=localhost:4566
+    volumes:
+      - "${TMPDIR:-/tmp}/test/localstack:/tmp/test/localstack"
+      - "/var/run/docker.sock:/var/run/docker.sock"
+      - "./localstack/init-aws.sh:/etc/localstack/init/ready.d/init-aws.sh"
+
+  app:
+    build: .
+    restart: always
+    ports:
+      - "8085:8085"
+    depends_on:
+      - db
+      - localstack
+    environment:
+      DB_HOST: db
+      DB_PORT: 5432
+      DB_NAME: postgres
+      DB_USER: postgres
+      DB_PASSWORD: mysecretpassword
+      AWS_REGION: sa-east-1
+      AWS_ENDPOINT_HOST: http://localstack:4566
+      AWS_ACCESS_KEY_ID: zxc
+      AWS_SECRET_ACCESS_KEY: zxc
+      SPRING_PROFILES_ACTIVE: local
