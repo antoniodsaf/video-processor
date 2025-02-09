@@ -17,7 +17,7 @@ spec:
 #          persistentVolumeClaim:
 #            claimName: videoprocessor-pvc
       containers:
-      - name: video-processor
+      - name: video-processorx
         image: antoniodsaf/video-processor:latest
         ports:
         - containerPort: 8085
