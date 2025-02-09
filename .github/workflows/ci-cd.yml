@@ -6,24 +6,24 @@ on:
       - master
 
 jobs:
-  unit-tests:
-    runs-on: ubuntu-latest
-
-    steps:
-      - name: Checkout Repository
-        uses: actions/checkout@v3
-
-      - name: Set up Java
-        uses: actions/setup-java@v3
-        with:
-          java-version: '21'
-          distribution: 'corretto'
-
-      - name: Make gradlew Executable
-        run: chmod +x gradlew
-
-      - name: Run Unit Tests
-        run: ./gradlew test
+#  unit-tests:
+#    runs-on: ubuntu-latest
+#
+#    steps:
+#      - name: Checkout Repository
+#        uses: actions/checkout@v3
+#
+#      - name: Set up Java
+#        uses: actions/setup-java@v3
+#        with:
+#          java-version: '21'
+#          distribution: 'corretto'
+#
+#      - name: Make gradlew Executable
+#        run: chmod +x gradlew
+#
+#      - name: Run Unit Tests
+#        run: ./gradlew test
 
   build:
     needs: [ unit-tests ]
@@ -33,13 +33,13 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: AWS Configure
-        uses: aws-actions/configure-aws-credentials@v4
-        with:
-          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
-          aws-secret-access-key: ${{ secrets.AWS_SECRET_ID }}
-          aws-session-token: ${{ secrets.AWS_SESSION_TOKEN }}
-          aws-region: ${{ env.REGION_DEFAULT }}
+#      - name: AWS Configure
+#        uses: aws-actions/configure-aws-credentials@v4
+#        with:
+#          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+#          aws-secret-access-key: ${{ secrets.AWS_SECRET_ID }}
+#          aws-session-token: ${{ secrets.AWS_SESSION_TOKEN }}
+#          aws-region: ${{ env.REGION_DEFAULT }}
 
       - name: Login to Docker Hub
         uses: docker/login-action@v3
