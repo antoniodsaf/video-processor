@@ -5,8 +5,24 @@ RUN apk update
 WORKDIR /app
 
 RUN apk update && \
-    apk add --no-cache curl && \
-    apk add --no-cache ffmpeg
+    apk add --no-cache \
+        curl \
+        ffmpeg \
+        ffmpeg-libavcodec \
+        ffmpeg-libavformat \
+        ffmpeg-libavutil \
+        ffmpeg-libswscale \
+        ffmpeg-libavfilter \
+        ffmpeg-libpostproc \
+        ffmpeg-libass \
+        libtheora \
+        libvorbis \
+        libvpx \
+        x264-dev \
+        x265-dev \
+        opus \
+        lame \
+        openssl
 
 COPY build/libs/video-processor.jar video-processor.jar
 

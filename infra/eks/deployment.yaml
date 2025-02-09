@@ -3,7 +3,7 @@ kind: Deployment
 metadata:
   name: video-processor
 spec:
-  replicas: 3
+  replicas: 1
   selector:
     matchLabels:
       app: video-processor
@@ -12,6 +12,10 @@ spec:
       labels:
         app: video-processor
     spec:
+#      volumes:
+#        - name: storage
+#          persistentVolumeClaim:
+#            claimName: videoprocessor-pvc
       containers:
       - name: video-processor
         image: antoniodsaf/video-processor:latest
