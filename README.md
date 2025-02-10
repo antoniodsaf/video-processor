@@ -4,11 +4,11 @@ Serviço responsável por converter um vídeo em um conjunto de imagens (frames)
 
 ## 🏛👷 Arquitetura
 
-O serviço foi desenvolvido utilizando o padrão de arquitetura hexagonal, onde a pasta/camada `app` é o centro da aplicação e as camadas `infra` e `adapter` são periféricas.
+O serviço foi desenvolvido utilizando o padrão de arquitetura hexagonal, onde a pasta/camada `application` é o centro da aplicação e as camadas `infrastructure` e `adapter` são periféricas.
 
-A camada `app` é <strong>agnóstica</strong>, ela depende só de si mesma, portanto ela não se comunica com camadas periféricas, entretanto as camadas periféricas (`infra` e `adapter`) se comunicam com ela.
+A camada `application` é <strong>agnóstica</strong>, ela depende só de si mesma, portanto ela não se comunica com camadas periféricas, entretanto as camadas periféricas (`infrastructure` e `adapter`) se comunicam com ela.
 
-A camada `adapter` é responsável por fazer a ponte (comunicação) entre o `"mundo externo"` e a camada `app`, portanto para o desenvolvimento deste há dois *"adapters"*: um responsável pela saída (*"OUTBOUND"*) comunicando com o banco de dados postgresql, e outro pela entrada (*"INBOUND"*) que é responsável por expor uma API rest (recebendo requisições HTTP) para consumidores.
+A camada `adapter` é responsável por fazer a ponte (comunicação) entre o `"mundo externo"` e a camada `application`, portanto para o desenvolvimento deste há dois *"adapters"*: um responsável pela saída (*"OUTBOUND"*) comunicando com o banco de dados postgresql, e outro pela entrada (*"INBOUND"*) que é responsável por expor uma API rest (recebendo requisições HTTP) para consumidores.
 
 Abaixo uma imagem representativa:
 
@@ -17,7 +17,7 @@ Abaixo uma imagem representativa:
 
 ## 👷🏃 Como construir e executar local?
 
-O desenvolvimento deste foi feito em cima da plataforma de desenvolvimento nodejs (com nestjs) e banco de dados postgresql para a persistência dos dados, portanto é recomendado as seguintes versões para a execução local:
+O desenvolvimento deste foi feito em cima da plataforma de desenvolvimento kotlin/jvm (com springboot) e banco de dados postgresql para a persistência dos dados, portanto é recomendado as seguintes versões para a execução local:
 ```
 jvm: 21
 postgresql: 16
