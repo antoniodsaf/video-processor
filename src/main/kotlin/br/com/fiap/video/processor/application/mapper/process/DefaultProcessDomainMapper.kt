@@ -20,8 +20,8 @@ class DefaultProcessDomainMapper : ProcessMapper {
             originalFile = originalFile,
             user = user,
             status = status,
-            createdAt = LocalDateTime.now(),
-            updatedAt = LocalDateTime.now(),
+            createdAt = createdAt,
+            updatedAt = updatedAt,
         )
     }
 

@@ -105,6 +105,16 @@ tasks.test {
 tasks.jacocoTestReport {
     dependsOn(tasks.test)
 
+    classDirectories.setFrom(files(classDirectories.files.map {
+        fileTree(it) {
+            exclude("**/br.com.fiap.video.processor.application.core.domain.exception/**")
+            exclude("**/br.com.fiap.video.processor.application.core.usecase.process.exception/**")
+            exclude("**/br.com.fiap.video.processor.infrastructure.configuration/**")
+            exclude("**/br.com.fiap.video.processor.adapter.inbound.entrypoint.aws.sqs/**")
+            exclude("**/br.com.fiap.video.processor/**")
+        }
+    }))
+
     reports {
         html.required = true
         xml.required = true
@@ -125,6 +135,8 @@ sonar {
 
     val exclusions = listOf(
         "**/VideoProcessorApp.kt",
+        "**/AWSConfiguration",
+
     )
 
     properties {

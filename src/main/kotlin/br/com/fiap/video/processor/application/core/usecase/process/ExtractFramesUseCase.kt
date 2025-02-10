@@ -120,7 +120,7 @@ class ExtractFramesUseCase(
 
         //TODO (made a progressing bar)
         // total frames in video
-        val totalFrames = grabber.lengthInFrames
+        //val totalFrames = grabber.lengthInFrames
 
         val frameInterval = (grabber.frameRate / FRAME_RATE).toInt()
         var frameNumber = 0
