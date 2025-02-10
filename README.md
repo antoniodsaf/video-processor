@@ -63,7 +63,9 @@ A aplicação monitora a fila SQS `trigger_processing` e, ao receber uma mensage
 Se tudo estiver correto, acessa o s3, faz download do video, extrai os frames salvando em imagens num diretorio temporário e depois grava no s3 um arquivo zip com todas imagens.
 
 A aplicação também publica mensagens na fila SQS `update_process` com o status do processamento do vídeo.
+
 **NOTA:** Esta aplicação não expõe nenhuma api REST, e nem possui conexão com o banco de dados, ela apenas processa mensagens da fila SQS supracitada.
+
 ---
 ### Diagrama de sequência contendo a interação entre os componentes
 
